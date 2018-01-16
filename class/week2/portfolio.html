@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BLOGO FOR THE DOGGO!!</title>
+  <title>Portfolio!</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -19,11 +19,15 @@
     <![endif]-->
   <style media="screen">
     .height1 {
-      height: 300px;
+      height: 250px;
     }
 
     .height2 {
       height: 100px;
+    }
+
+    .height3 {
+      height: 150px;
     }
   </style>
 </head>
@@ -31,19 +35,33 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-3 height1 randomColor"></div>
-      <div class="col-md-9 height1 randomColor"></div>
+      <div class="col-md-12 height1 randomColor"></div>
     </div>
     <div class="row">
-      <div class="col-md-12 height2 randomColor"></div>
+      <div class="col-md-12 height1 randomColor"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 height2 randomColor"></div>
+      <div class="col-md-3 height2 randomColor"></div>
+      <div class="col-md-3 height2 randomColor"></div>
+      <div class="col-md-3 height2 randomColor"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 height2 randomColor"></div>
+      <div class="col-md-3 height2 randomColor"></div>
+      <div class="col-md-3 height2 randomColor"></div>
+      <div class="col-md-3 height2 randomColor"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 height3 randomColor"></div>
     </div>
   </div>
 
 
+
+
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -58,12 +76,12 @@
       }
 
 
-//get all  the elements (divs) with the class .randomColor
+  //get all  the elements (divs) with the class .randomColor
       var randomColor = $(".randomColor");
 
 
-//loop thru all elements
-//for each elements change the CCS background color to RGB + 3 randomColor
+  //loop thru all elements
+  //for each elements change the CCS background color to RGB + 3 randomColor
       $.each(randomColor, function(index, item) {
         $(this).css("background-color", "RGB(" + getRandomColor() + "," + getRandomColor() + "," + getRandomColor() + ")");
       })
