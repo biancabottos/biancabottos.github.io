@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Joti+One|Kavivanar|Macondo|Quicksand|Raleway|Ranga|Sedgwick+Ave+Display');
+/* Eric Meyer CSS Reset begins*/
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+/* Eric Meyer CSS Reset ends */
+
+body{
+  background-color: white;
+}
+.mainDiv{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    line-height: 27px;
+}
+
+p, h2, header{
+  margin-bottom: 50px;
+}
+
+
+h1{
+  font-family: "Futura";
+  color: black;
+  font-size: 60px;
+  text-transform: uppercase;
+  background-image: url(headerImg.png);
+  height: 330px;
+  text-align: center;
+  line-height: 330px;
+}
+
+h2{
+  font-family: "Futura";
+  font-size: 36px;
+  text-transform: uppercase;
+  color: balck;
+}
+
+ul{
+  font-family: "Verdana";
+  color: black;
+  text-transform: uppercase;
+  font-size: 20px;
+  list-style: none;
+  max-width: 700px;
+  margin-left: 200px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  line-height: 60px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+blockquote{
+  font-family: "Courier New";
+  font-size: 24px;
+  color: black;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  text-align: center;
+
+}
+
+#byline{
+  font-family: "Futura";
+  color: black;
+}
+
+.text{
+  font-family: "Verdana";
+  color: black;
+  font-size: 18px;
+}
+
+img{
+  padding-left: 12px;
+  max-width: 800px;
+}
