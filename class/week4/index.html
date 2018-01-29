@@ -17,32 +17,33 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+  <style media="screen">
+    .height1 {
+      height: 50px;
+    }
+
+    .height2 {
+      height: 200px;
+    }
+  </style>
 </head>
 
-<style media="screen">
-  .height1 {
-    height: 50px;
-  }
-
-  .height2 {
-    height: 200px;
-  }
-</style>
 
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-12 height1"></div>
+      <div class="col-md-12 height1 randomColor"></div>
     </div>
 
     <div class="row">
-      <div class="cold-md-2 height2"></div>
-      <div class="cold-md-8 height2"></div>
-      <div class="cold-md-2 height2"></div>
+      <div class="cold-md-2 height2 randomColor"></div>
+      <div class="cold-md-8 height2 randomColor"></div>
+      <div class="cold-md-2 height2 randomColor"></div>
     </div>
 
     <div class="row">
-      <div class="col-md-12 height"></div>
+      <div class="col-md-12 height randomColor"></div>
     </div>
 
   </div>
@@ -69,6 +70,34 @@
       })
 
     })
+  </script>
+
+  <script type="text/javascript">
+    //alert("my JS!");
+
+  /*  console.log("Write to the functoin.....")
+    //above are built in functions
+    //we can also define
+
+    function myFirstFunction() {
+      //waht ever is in the curly boys will run when we call the function
+      console.log("Write from inside the function...");
+    }
+
+    myFirstFunction();
+    myFirstFunction();
+    myFirstFunction();
+    myFirstFunction();
+
+    function myFirstFunctionWithParameter(name) {
+
+
+      console.log("Hello fam" + name);
+    }
+
+    myFirstFunctionWithParameter("Bianca");
+    myFirstFunctionWithParameter(" ,how are you?");
+    */
   </script>
 </body>
 
