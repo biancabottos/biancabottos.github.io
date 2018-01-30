@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Week 4</title>
+  <title>The Grid</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -17,33 +17,73 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
   <style media="screen">
     .height1 {
-      height: 50px;
+      height: 200px;
     }
 
-    .height2 {
-      height: 200px;
+    .fitHeightWidth {
+      height: 100%;
+      width: 100%;
+    }
+
+    .absoluteChild {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flexBicep{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
     }
   </style>
 </head>
 
-
 <body>
+
   <div class="container">
     <div class="row">
-      <div class="col-md-12 height1 randomColor"></div>
+      <div class="col-md-3 height1">
+        <img src="image1.jpg" class="fitHeightWidth" alt="Cookies"> </div>
+
+      <div class="col-md-3 height1">
+        <img src="image2.jpg" class="absoluteChild" alt="Flower"> </div>
+
+      <div class="col-md-3 height1 flex">
+        <img src="image2.jpg" alt="Flower"> </div>
+      <div class="col-md-3 height1 flex"></div>
+
     </div>
 
     <div class="row">
-      <div class="cold-md-2 height2 randomColor"></div>
-      <div class="cold-md-8 height2 randomColor"></div>
-      <div class="cold-md-2 height2 randomColor"></div>
+      <div class="col-md-12 height1 flexBicep">
+      <img src="image2.jpg" alt="Flower">
+      <img src="image2.jpg" alt="Flower">
+      <img src="image2.jpg" alt="Flower">
+    </div>
+    </div>
+
+
+
+
+
     </div>
 
     <div class="row">
-      <div class="col-md-12 height randomColor"></div>
+      <div class="col-md-3 height1 randomColor"></div>
+      <div class="col-md-3 height1 randomColor"></div>
+      <div class="col-md-3 height1 randomColor"></div>
+      <div class="col-md-3 height1 randomColor"></div>
     </div>
 
   </div>
@@ -70,67 +110,6 @@
       })
 
     })
-  </script>
-
-  <script type="text/javascript">
-    //alert("my JS!");
-
-    /*  console.log("Write to the functoin.....")
-      //above are built in functions
-      //we can also define
-
-      function myFirstFunction() {
-        //waht ever is in the curly boys will run when we call the function
-        console.log("Write from inside the function...");
-      }
-
-      myFirstFunction();
-      myFirstFunction();
-      myFirstFunction();
-      myFirstFunction();
-
-      function myFirstFunctionWithParameter(name) {
-
-
-        console.log("Hello fam" + name);
-      }
-
-      myFirstFunctionWithParameter("Bianca");
-      myFirstFunctionWithParameter(" ,how are you?");
-      */
-
-    // variables defined with var key word
-    var myOnOff = true;
-    var isDayTime = false;
-
-    //number values
-    var salary = 1000000;
-    var carPrice = 25000.00;
-
-    //text or string values
-    var emailAddress = "bbotto01@guelphhumber.ca";
-    var sentence = 'The Judgment of Paris.';
-    var anotherSentence = "Anderson's Class";
-
-    var salary1 = 100000;
-    var salary2 = "100000";
-
-    var taxes = 25000;
-
-
-    console.log("My take home pay is " + (salary1 + taxes));
-
-    console.log("a bunch of info : " + salary + " and " + carPrice + " and even more " + isDayTime);
-    var myConcatenation = "2a bunch of info : "+ salary + " and "+ carPrice + " and even more " + isDayTime;
-
-    console.log(myConcatenation);
-
-    function writeToConsole(myString){
-      console.log(myString);
-    }
-
-    writeToConsole(myConcatenation);
-    writeToConsole("3" + myConcatenation);
   </script>
 </body>
 

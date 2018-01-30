@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4 rowzzzz</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style media="screen">
+    .height1 {
+      height: 200px;
+    }
+
+    .flexCenter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flexSpaceA {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .flexSpaceB {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .absoluteChild {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    body {
+      background-color: #FFF5EE;
+    }
+
+    h1 {
+      font-family: cursive;
+      font-size: 60px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Saturdays are for:</h1>
+        <p>
+          An ideal summer evening grilling with the boys, cold ones cracking, meat sizzling #DillyDilly
+        </p>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12 height1 flexCenter"> <img src="bbq.png" alt="BBQ"> </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-3 height1 flexSpaceB"> <img src="beer.png" alt="Beer"> </div>
+      <div class="col-md-3 height1 flexSpaceB"> <img src="beer.png" alt="Beer"> </div>
+      <div class="col-md-3 height1 flexSpaceB"> <img src="beer.png" alt="Beer"> </div>
+      <div class="col-md-3 height1 flexSpaceB"> <img src="beer.png" alt="Beer"> </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-4 height1"> <img src="onionRings.png" class="absoluteChild" alt="Onion Rings"> </div>
+      <div class="col-md-4 height1"> <img src="onionRings.png" class="absoluteChild" alt="Onion Rings"> </div>
+      <div class="col-md-4 height1"> <img src="onionRings.png" class="absoluteChild" alt="Onion Rings"> </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-12 height1 flexSpaceA"> <img src="burger.png" alt="Burger"> </div>
+    </div>
+
+
+
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+<script type="text/javascript">
+  //when the document is loaded
+  $(document).ready(function() {
+    //this function get a random color between 0 and 255
+    function getRandomColor() {
+      return Math.floor(Math.random() * 255);
+    }
+
+    //get all the elements (divs) with the class .randomColor
+    var randomColor = $(".randomColor");
+
+    //loop through all elements
+    // for each element change the css background-color to RGB + three random colors
+    $.each(randomColor, function(index, item) {
+      $(this).css("background-color", "RGB(" + getRandomColor() + "," + getRandomColor() + "," + getRandomColor() + ")");
+    })
+
+  })
+</script>
+
+</html>
