@@ -16,8 +16,40 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style media="screen">
+  .height1{
+    height: 100px;
+  }
+
+  .height2{
+    height: 400px;
+  }
+
+  .boldRed{
+    font-weight: bold;
+    color: red;
+  }
+</style>
+
   </head>
   <body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 randomColor height1"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 randomColor height2"></div>
+    <div class="col-md-8 myConsole height2"></div>
+    <div class="col-md-2 randomColor height2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 randomColor height1"></div>
+  </div>
+
+</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -52,14 +84,65 @@ console.log("numberArray "+numberArray);
 console.log("the number of elements in numberArray: "+numberArray.length);
 console.log("with some text in between :"+numberArray.join(";"));
 
+//var sum = numberArray [0]+numberArray[1]......
+
+//to loop through an array we need to know 3 things:
+//1. index where to start
+//2. index where to end
+//3. the incremet
+
+
+//start at index 0
+//do the code block - everything inside the {} -- as long as i iess lesss than number.array.length
+//next value goes up by one (increment is 1);
+
+
+//i is the placeholder index - keep doing till i is less than number array.length
+var sum = 0;
+for (var i=0;i<numberArray.length;i=i+1){
+    console.log("the current index is "+i);
+    console.log("the value at index "+i+" is "+
+    numberArray[i]);
+    //add to the running total
+    sum = sum + numberArray[i];
+    console.log("the current sum is "+sum);
+}
+//loop is finishsed we can get the toatl
+console.log("the average is "+ (sum/numberArray.length));
+
+
+//practice---------
+
+//decalre an empty string variable
+var wordArray = ["today", "is", "Kate's", "21st", "birthday", "how", "exciting"];
+    //add each word
+var fullSentence="";
+for (var j=0;j<wordArray.length;j=j+1){
+  fullSentence = fullSentence + wordArray[j]+" ";
+}
+//output the full sentence
+console.log("the full sentence is "+fullSentence);
+
+//$ =jQuery function
+//document is the entire html as a built in variable
+//ready is an 'event'
+//when the doc is ready excecute the function
+$(document).ready(function(){
+  //get the myConsole element . <
+  //call the HTML function
+  //HTML funciton writes HTML
+  //wht we give the html function is a parameter
+  $(".myConsole").html("the full sentence is "+fullSentence);});
+
+  //append adds to the existing
+  $(".myConsole").append("<h1 class='boldRed'>here is antoher sentence </h1>");
+
+  $(".myConsole").prepend("<div class='boldRed'>text before all </div>");
+</div>)
 
 
 
-
-
-
-
-
+});
 
 </script>
 
@@ -73,12 +156,26 @@ console.log("with some text in between :"+numberArray.join(";"));
 
 
 
+<script type="text/javascript">
 
+//when the document is loaded
+$(document).ready(function() {
+//this function get a random color between 0 and 255
+function getRandomColor() {
+  return Math.floor(Math.random() * 255);
+}
 
+//get all the elements (divs) with the class .randomColor
+var randomColor = $(".randomColor");
 
+//loop through all elements
+// for each element change the css background-color to RGB + three random colors
+$.each(randomColor, function(index, item) {
+  $(this).css("background-color", "RGB(" + getRandomColor() + "," + getRandomColor() + "," + getRandomColor() + ")");
+})
 
-
-
+})
+</script>
 
   </body>
 </html>
