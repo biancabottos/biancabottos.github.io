@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 7 CATS!</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<style media="screen">
+  .height1 {
+    height: 100px;
+  }
+
+  .height2 {
+    height: 400px;
+  }
+</style>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 height1 randomColor"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2 height2 randomColor"></div>
+      <div class="col-md-8 height2 output"></div>
+      <div class="col-md-2 height2 randomColor"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12  height1 randomColor"></div>
+    </div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+    //when the document is loaded
+    $(document).ready(function() {
+      //this function get a random color between 0 and 255
+      function getRandomColor() {
+        return Math.floor(Math.random() * 255);
+      }
+
+      //get all the elements (divs) with the class .randomColor
+      var randomColor = $(".randomColor");
+
+      //loop through all elements
+      // for each element change the css background-color to RGB + three random colors
+      $.each(randomColor, function(index, item) {
+        $(this).css("background-color", "RGB(" + getRandomColor() + "," + getRandomColor() + "," + getRandomColor() + ")");
+      })
+
+    })
+  </script>
+
+  <script>
+    var cats = [{
+        "breed": "britishShorthair",
+        "hairLength": "short",
+        "color": "grey",
+        "isOutdoor": true,
+        "isFoundInWild": false,
+        "age": 3,
+        "name": "Mia",
+        "owner": "Bianca",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat0.jpg"
+      },
+
+
+      {
+        "breed": "Tabby",
+        "hairLength": "Short",
+        "color": "Orange",
+        "isOutdoor": false,
+        "isFoundInWild": false,
+        "age": 7,
+        "name": "Kitty",
+        "owner": "Kevin",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat1.jpg"
+      },
+
+      {
+        "breed": "Persian",
+        "hairLength": "long",
+        "color": "white",
+        "isOutdoor": false,
+        "isFoundInWild": false,
+        "age": 4,
+        "name": "Magnolia",
+        "owner": "Loucas",
+        "imgURL": "http://andersonguelphjs.github.io/class/week7/img/cat2.jpg"
+      },
+      {
+        "breed": "Lion",
+        "hairLength": "long",
+        "color": "beige",
+        "isOutdoor": true,
+        "isFoundInWild": true,
+        "age": 7,
+        "name": "Leon",
+        "owner": "none",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat3.jpg"
+      },
+
+      {
+        "breed": "maineCoon",
+        "hairLength": "long",
+        "isIndoor": true,
+        "isFoundInWild": false,
+        "age": 6,
+        "name": "flufferButt",
+        "owner": "shouldBeMine",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat4.jpg"
+      },
+
+      {
+        "breed": "Tabby",
+        "hairLength": "medium-long",
+        "color": "black and orange",
+        "isOutdoor": false,
+        "isFoundInWild": false,
+        "age": 16,
+        "name": "Nala",
+        "owner": "Sarah",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat5.jpg"
+      },
+
+      {
+        "breed": "Munchkin",
+        "hairLength": "short",
+        "color": "white",
+        "isOutdoor": false,
+        "isFoundInWild": false,
+        "age": 5,
+        "name": "Muncher",
+        "owner": "Abel",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat6.jpg"
+      },
+
+      {
+        "breed": "britishShorthair",
+        "hairLength": "short",
+        "color": "grey",
+        "isOutdoor": false,
+        "isFoundInWild": false,
+        "age": 22,
+        "name": "puss",
+        "owner": "Sydney",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat7.jpg"
+      },
+
+      {
+        "breed": "Tabby",
+        "hairLength": "Long",
+        "color": "Orange",
+        "isOutdoor": false,
+        "isFoundInWild": false,
+        "age": 5,
+        "name": "Tabs",
+        "owner": "Mark",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat8.jpg"
+      },
+
+      {
+        "breed": "persian",
+        "hairlength": "long",
+        "color": "white",
+        "isOutdoor": false,
+        "isFoundInwild": false,
+        "age": 2,
+        "name": "kit",
+        "owner": "Kateland",
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat9.jpg"
+      }
+    ];
+  </script>
+
+
+  <script>
+    $(document).ready(function() {
+      //$(".output").html("test output");
+      var html = "<table class='table table-hover table-striped'>" +
+        "<tr>" +
+        "<th>picture</th>" +
+        "<th>name</th>" +
+        "<th>age</th>" +
+        "<th>owner</th>" +
+        "<th>breed</th>" +
+        "<th>color</th>" +
+        "<th>hair length</th>" +
+        "<th>outdoor ?</th>" +
+        "<th>wild ?</th>" +
+        "</tr>";
+
+      //here is the loop
+
+      html += "</table>"
+      $(".output").html(html);
+
+    });
+  </script>
+
+</body>
+
+</html>
