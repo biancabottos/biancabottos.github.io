@@ -107,7 +107,7 @@
         "age": 4,
         "name": "Magnolia",
         "owner": "Loucas",
-        "imgURL": "http://andersonguelphjs.github.io/class/week7/img/cat2.jpg"
+        "imgUrl": "http://andersonguelphjs.github.io/class/week7/img/cat2.jpg"
       },
       {
         "breed": "Lion",
@@ -124,7 +124,7 @@
       {
         "breed": "maineCoon",
         "hairLength": "long",
-        "isIndoor": true,
+        "isOutdoor": true,
         "isFoundInWild": false,
         "age": 6,
         "name": "flufferButt",
@@ -200,19 +200,32 @@
       //$(".output").html("test output");
       var html = "<table class='table table-hover table-striped'>" +
         "<tr>" +
-        "<th>picture</th>" +
-        "<th>name</th>" +
-        "<th>age</th>" +
-        "<th>owner</th>" +
-        "<th>breed</th>" +
-        "<th>color</th>" +
-        "<th>hair length</th>" +
-        "<th>outdoor ?</th>" +
-        "<th>wild ?</th>" +
+          "<th>picture</th>" +
+          "<th>name</th>" +
+          "<th>age</th>" +
+          "<th>owner</th>" +
+          "<th>breed</th>" +
+          "<th>color</th>" +
+          "<th>hair length</th>" +
+          "<th>outdoor ?</th>" +
+          "<th>wild ?</th>" +
         "</tr>";
 
       //here is the loop
-
+      for (var i=0;i< cats.length;i++){
+          console.log("i "+i);
+          html+=  "<tr>" +
+            "<td><img src='"+cats[i].imgUrl+"'/></td>" +
+            "<td>"+cats[i].name+"</td>" +
+            "<td>"+cats[i].age+"</td>" +
+            "<td>"+cats[i].owner+"</td>" +
+            "<td>"+cats[i].breed+"</td>" +
+            "<td>"+cats[i].color+"</td>" +
+            "<td>"+cats[i].hairLength+"</td>" +
+            "<td>"+cats[i].isOutdoor+"</td>" +
+            "<td>"+cats[i].isFoundInWild+"</td>" +
+          "</tr>";
+      }
       html += "</table>"
       $(".output").html(html);
 
