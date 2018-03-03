@@ -20,6 +20,7 @@
 </head>
 
 <style media="screen">
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
   .height1 {
     height: 100px;
   }
@@ -27,29 +28,103 @@
   .height2 {
     height: 880px;
   }
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+
+    font-family: 'Montserrat';
+    font-size: 20px;
+    text-transform: uppercase;
+
+
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  p {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    margin-bottom: 0;
+    text-align: center;
+    cursor: auto;
+  }
+
+  .btn-lg {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #82CAFF;
+    border-color: white;
+  }
+
+  .container {
+    font-family: 'Montserrat';
+    font-size: 17px;
+  }
+
+
+.ad1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
 
 <body>
 
-  <ul>
-    <li>All the sharks</li>
-    <li>Pacific Ocean</li>
-    <li>Atlantic Ocean</li>
-    <li>Caribbean</li>
-  </ul>
-
   <div class="container">
     <div class="row">
-      <div class="col-md-12 height1 randomColor"></div>
+      <div class="col-md-12 header">
+        <img src="header.png" alt="header"> </div>
     </div>
+
+    <ul>
+      <button type="button" class="btn btn-primary btn-lg gradient"> <li> <a href="#">All the sharks</a> </li></button>
+      <button type="button" class="btn btn-primary btn-lg gradient"> <li> <a href="#">Pacific Ocean</a> </li></button>
+      <button type="button" class="btn btn-primary btn-lg gradient"><li> <a href="#">Atlantic Ocean</a> </li> </button>
+      <button type="button" class="btn btn-primary btn-lg gradient"> <li> <a href="#">Caribbean</a> </li> </button>
+    </ul>
 
     <div class="row">
       <div class="col-md-9 height2 output"></div>
-      <div class="col-md-3 height2 randomColor"></div>
+      <div class="col-md-3 height2 ad1">
+      <img src="ad-1.png" alt="Shark Week AD"> </div>
     </div>
 
     <div class="row">
-      <div class="col-md-12  height1 randomColor"></div>
+      <div class="col-md-12  ad2">
+        <img src="ad-2.png" alt="Shark Week AD">
+        <p>Sharks are JAWsome!</p>
+      </div>
     </div>
   </div>
 
@@ -102,7 +177,7 @@
 
       {
         "breed": "Goblin Shark",
-        "bodyLength": "5 feet",
+        "bodyLength": "15 feet",
         "scary": true,
         "imgUrl": "img/goblinShark.jpg"
       },
@@ -122,19 +197,19 @@
       //$(".output").html("test output");
       var html = "<table class='table table-hover table-striped'>" +
         "<tr>" +
-          "<th>Picture</th>" +
-          "<th>Breed</th>" +
-          "<th>Body Length</th>" +
-          "<th>Scary?</th>" +
+        "<th>Picture</th>" +
+        "<th>Breed</th>" +
+        "<th>Body Length</th>" +
+        "<th>Scary?</th>" +
         "</tr>";
 
-      for (var i=0;i< shark.length;i++){
-          console.log("i "+i);
-          html+=  "<tr>" +
-            "<td><img src='"+shark[i].imgUrl+"'/></td>" +
-            "<td>"+shark[i].breed+"</td>" +
-            "<td>"+shark[i].bodyLength+"</td>" +
-            "<td>"+shark[i].scary+"</td>" +
+      for (var i = 0; i < shark.length; i++) {
+        console.log("i " + i);
+        html += "<tr>" +
+          "<td><img src='" + shark[i].imgUrl + "'/></td>" +
+          "<td>" + shark[i].breed + "</td>" +
+          "<td>" + shark[i].bodyLength + "</td>" +
+          "<td>" + shark[i].scary + "</td>" +
           "</tr>";
       }
       html += "</table>"
