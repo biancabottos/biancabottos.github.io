@@ -1,0 +1,42 @@
+[
+  {
+    "state":"Arizona",
+    "capital":"Phoenix",
+    "size":"295,234 km2",
+    "population":"6,931,071",
+    "hot":"YES",
+    "haveVisited":true
+  },
+  {
+    "state":"Georgia",
+    "capital":"Atlanta",
+    "size":"153,909 km2",
+    "population":"10,310,371",
+    "hot":"sometimes",
+    "haveVisited":true
+  },
+  {
+    "state":"Wyoming",
+    "capital":"Cheyenne",
+    "size":"253,600 km2",
+    "population":"585,501",
+    "hot":"kinda",
+    "haveVisited":false
+  },
+  {
+    "state":"Kentucky",
+    "capital":"Frankfort",
+    "size":"104,659 km2",
+    "population":"4,454,189 ",
+    "hot":"sometimes",
+    "haveVisited":false
+  },
+  {
+    "state":"Texas",
+    "capital":"Austin",
+    "size":"696,241 km2",
+    "population":"28,304,596",
+    "hot":"YES",
+    "haveVisited":true
+  }
+]
