@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HEYO JSON</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+<div class="container">
+  <div class="output">
+  </div>
+
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+      var url = "https://biancabottos.github.io/class/week8/myJson.json";
+
+      $.getJSON(url).done(function(data) {
+        console.log("success! ");
+        console.dir(data);
+        var dataHtml = "<table class= 'table table-striped table-hover'>";
+        "<tr>"+
+           "<th>State</th>"+
+           "<th>Capital</th>"+
+           "<th>Size</th>"+
+           "<th>Population</th>"+
+           "<th>Hot ?</th>"+
+           "<th>Have I Visited ?</th>"+
+        "</tr>";
+
+        for (var i=0; i <data.length; i++){console.log("i "+i);
+          dataHtml+="<tr>"+
+          "<td>"+data[i].state+"</td>";
+          dataHtml+="<td>"+data[i].capital+"</td>";
+          dataHtml+="<td>"+data[i].size+"</td>";
+          dataHtml+="<td>"+data[i].population+"</td>";
+          dataHtml+="<td>"+data[i].hot+"</td>";
+          dataHtml+="<td>"+data[i].haveVisited+"</td>";
+          "</tr>"
+        }
+
+        $(document).ready(function() {
+          $(".output").html(dataHtml);
+        })
+
+      }).fail(function(data) {
+        console.log("failed! " + JSON.stringify(data));
+      });
+    </script>
+  </body>
+</html>
