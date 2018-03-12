@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WEATHER</title>
+  <title>WEATHER FOR ALL THE MANS</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.css">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -21,14 +21,34 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   <style media="screen">
+    @import url('https://fonts.googleapis.com/css?family=Mina');
+
+    body {
+      background-color: #BDEDFF;
+    }
+
     .weatherDiv {
       display: flex;
       justify-content: space-around;
       align-items: center;
+      background-color: white;
     }
 
-    .wi{
+    .wi {
       font-size: 3em;
+    }
+
+    h1{
+      font-family: 'Mina';
+      font-weight: bold;
+      text-align: center;
+      margin: 70px;
+    }
+
+    .dayText{
+      font-size: 30px;
+      font-family: 'Mina';
+      margin-bottom: 15px;
     }
   </style>
 </head>
@@ -36,13 +56,8 @@
 <body>
   <div class="container">
     <div class="row">
+      <h1>what are the cloudmans saying styll??</h1>
       <div class="col-md-12 weatherDiv"></div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <i class="wi wi-night-sleet"></i>
-
-      </div>
 
     </div>
   </div>
@@ -51,18 +66,14 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script>
+    var iconClasses = {
+      "Rain And Snow": "wi-rain-mix",
+      "Mostly Cloudy": "wi-cloudy",
+      "Breezy": "wi-windy",
+      "Partly Cloudy": "wi-day-cloudy-high",
+      "Mostly Sunny": "wi-day-sunny"
 
-  var iconClasses ={
-    "Rain And Snow":"wi-rain-mix",
-    "Mostly Cloudy":"wi-cloudy",
-    "Breezy":"wi-windy",
-    "Partly Cloudy":"wi-day-cloudy-high",
-    "Mostly Sunny":"wi-day-sunny"
-
-  }
-
-
-
+    }
 
     var url =
       "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22toronto%2C%20ON%22)%20and%20u%3D'c'&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=";
@@ -76,10 +87,10 @@
 
         console.log("i" + i);
         html += "<div class='dayOfWeek'>"
-        html += "<div>" + f[i].text + "</div>";
+        html += "<div class='dayText'>" + f[i].day + "</div>";
+        html += "<i class='wi " + iconClasses[f[i].text] + "'></i>";
         html += "<div>" + f[i].date + "</div>";
-        html += "<div>" + f[i].day + "</div>";
-        html+="<i class='wi "+iconClasses[f[i].text]+"'></i>";
+        html += "<div>" + f[i].text + "</div>";
         html += "</div>"
       }
       $(document).ready(function() {
