@@ -1,94 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 9 - CARDS</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Week 9 - Cards</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <style media="screen">
       .myHtml{
-        display: flex;
+        display:flex;
         justify-content: space-around;
         align-items: center;
       }
-
       .font20{
         font-size: 20px;
       }
       .boldText{
         font-weight: bold;
       }
-    </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 myHtml"></div>
-    </div>
-  </div>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-  <script>
-    var url = "https://zabrinabolasco.github.io/class/week8/assets/cities.json";
-
-  //   {"source":"https://images.unsplash.com/photo-1477091889224-8320eb2f1c66?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=830309c43318e8040ac6d5156e954370&auto=format&fit=crop&w=1050&q=80",
-  // "alternate": "city2",
-  // "city": "Chicago",
-  // "country":"USA",
-  // "class": "item"},
-
-    function processData(d){
-      console.dir(d);
-      var html=""; //make a variable to hold the HTML
-
-      //for the Looooopamon
-      for(var i=0;i<d.length;i++){
-        html+="<div>";//this div alone is the personal container per item
-        html+="<div class='font20 boldText'>"+d[i].alternate+"</div>";
-        html+="<div>"+d[i].city+"</div>";
-        html+="<div>"+d[i].country+"</div>";
-        html+="<div>"+d[i].class+"</div>";
-        html+="<button type='button' class='btn btn-default'>Click!</button>";
-        html+="</div>";
+      .greyBackground{
+        background-color: #efefef;
       }
-      $(document).ready(function(){
-        $(".myHtml").html(html);
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 myHtml">
 
-        //write an event to handle a click (event-handler function)
-        
-      })
-    }
+        </div>
+      </div>
+    </div>
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+      var url="https://sluu01.github.io/class/week8/myJSON.json";
+
+
+function processData(d){
+  console.dir(d);
+  var html=""; //make variable that will hold html
+
+  //for loop
+  for(var i=0;i<d.length;i++){
+    html+="<div class='myItem'>";//container for this item
+    html+="<div class='font20 boldText'>"+d[i].name+"</div>";
+    html+="<div>"+d[i].texture+"</div>";
+    html+="<div>"+d[i].caption+"</div>";
+    html+="<div>"+d[i].type+"</div>";
+    html+="<div>"+d[i].temperature+"</div>";
+    html+="<div>"+d[i].origin+"</div>";
+    html+="<button type='button' class='itemButton btn btn-default'>Click!</button>";
+    html+="</div>";
+
+  }
+  //write the html to the page
+  $(document).ready(function(){
+    $(".myHtml").html(html);
+
+    //write and event to handle a  Click
+    //event handler fucntions
+
+    //event for all buttons/ turn on click, execute function
+
+    $(".itemButton").on("click", function(){
+      console.log("click");
+        //go up the tree to the closest css
+        $(this).closest(".myItem").toggleClass("greyBackground");
+
+    });
+  })
+}
+
+      //$.getJSON
     $.get(url)
-      .done(function(data){ //what comes back is put into data
-        console.log("success!");
-        console.dir(data);
+      .done(function(data){//what comes back is put into "data"
+          console.log("success!!");
+          console.dir(data);
 
-        //do something w the data
-        processData(data);
+  processData(data);
       })
-      .fail(function(data) {
-        console.log("failed " + JSON.stringify(data));
+      .fail(function(data){
+          console.log("failed "+JSON.stringify(data));
       })
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
