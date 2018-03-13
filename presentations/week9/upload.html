@@ -1,100 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> One Page Design </title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> One Page Design </title>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style media="screen">
-      body{
-        max-width: 100%;
-        background-image: url(crossword.png);
-        background-repeat: repeat;
-      }
+  <style media="screen">
+    body {
+      max-width: 100%;
+      background-image: url(crossword.png);
+      background-repeat: repeat;
+    }
 
-      h1{
-        text-align: center;
-      }
+    h1 {
+      text-align: center;
+    }
 
-      img{
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        padding-top: 120px;
-      }
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      padding-bottom: 120px;
+    }
 
-      .nav-bar ul {
-        height: 40px;
-        width: 100%;
-        text-align: center;
-        text-decoration: none;
-      }
+    .nav-bar {
+      height: 40px;
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
 
-      .nav-bar a {
-        font-size: 20px;
-      }
+    }
 
-      .nav-bar li {
-        display: inline-block;
-      }
+    .nav-bar a {
+      font-size: 20px;
+      text-decoration: none;
+    }
 
-    </style>
+    .nav-bar li {
+      display: inline-block;
+
+    }
+
+    .nav-bar ul {
+      word-spacing: 60px;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1> Bianca's Diner Menu</h1>
-</header>
+  <header>
+    <h1> Bianca's Diner Menu</h1>
+  </header>
 
-<nav class="nav-bar">
-  <ul>
-    <li>Appetizers</li>
-    <li>Soups & Salads</li>
-    <li>Mains</li>
-    <li>Sides</li>
-    <li>Beverages</li>
-    <li>Desserts</li>
-  </ul>
-</nav>
+  <nav class="nav-bar">
+    <ul>
+      <li>
+        <a href="#appetizers">Appetizers</a>
+      </li>
+      <li>
+        <a href="#soups-salads">Soups&Salads</a>
+      </li>
+      <li>
+        <a href="#mains">Mains</a>
+      </li>
+      <li>
+        <a href="#sides">Sides</a>
+      </li>
+      <li>
+        <a href="#drinks">Beverages</a>
+      </li>
+      <li>
+        <a href="#dessert">Desserts</a>
+      </li>
+    </ul>
+  </nav>
 
-<!-- Insert Appetizers PNG Mock up Here -->
+  <!-- Insert Appetizers PNG Mock up Here -->
+  <h2 id="appetizers">
 <img src="appetizers.png" alt="Appetizers Menu">
+</h2>
 
-<!-- Insert Soups and Salads PNG Mock up Here -->
+
+  <!-- Insert Soups and Salads PNG Mock up Here -->
+  <h2 id="soups-salads">
 <img src="soups-n-salads.png" alt="Soups & Salads Menu">
+</h2>
 
 
-<!-- Insert Mains PNG Mock up Here -->
+
+  <!-- Insert Mains PNG Mock up Here -->
+  <h2 id="mains">
 <img src="mains.png" alt="Mains Menu">
+</h2>
 
 
-<!-- Insert Sides PNG Mock up Here -->
+  <!-- Insert Sides PNG Mock up Here -->
+  <h2 id="sides">
 <img src="sides.png" alt="Sides Menu">
+</h2>
 
 
-<!-- Insert Beverages PNG Mock up Here -->
+  <!-- Insert Beverages PNG Mock up Here -->
+  <h2 id="drinks">
 <img src="drinks.png" alt="Drink Menu">
+</h2>
 
 
-<!-- Insert Desserts PNG Mock up Here -->
+  <!-- Insert Desserts PNG Mock up Here -->
+  <h2 id="dessert">
 <img src="dessert.png" alt="Dessert Menu">
+</h2>
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </body>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
 </html>
