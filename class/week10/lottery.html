@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LOttery</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <style media="screen">
+
+  .winningTicket::before{
+    content:"Winning Ticket: ";
+  }
+
+  .myTicket::before{
+
+  }
+    .winningTicket,
+    .myTicket {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .lotteryBall {
+      height: 80px;
+      width: 80px;
+      line-height: 80px;
+      background-color: pink;
+      border-radius: 45px;
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .match {
+      background-color: #82CAFF;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 winningTicket">
+        <div class="lotteryBall">12</div>
+        <div class="lotteryBall">16</div>
+        <div class="lotteryBall">22</div>
+        <div class="lotteryBall">31</div>
+        <div class="lotteryBall">35</div>
+        <div class="lotteryBall">41</div>
+        <div class="lotteryBall">47</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 myTicket"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 myOutput"></div>
+    </div>
+
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script>
+    // some psudeo code shit idek
+    //
+    //
+
+    var winningTicket = getRandomArray();
+    var myTicket = getRandomArray();
+    $(".myOutput").append("winningTicket" + winningTicket.join(";") + "<br>");
+    $(".myOutput").append("myTicket" + myTicket.join(";") + "<br>");
+
+    writeArrayToDiv(winningTicket, ".winningTicket");
+    writeArrayToDiv(myTicket, ".myTicket");
+
+    function wrtieArrayToDiv(arr, selector) {
+
+      var html = "";
+      far(var i = 0; i < arr.length; i++) {
+        html += "<div data-value= '+arr[i]+"lotteryBall""+arr[i]+"""</div>";
+      }
+      $(selector).html(html);
+    }
+    function sortNumber(a, b) {
+      return a - b;
+    }
+
+
+
+    function getRandomArray() {
+      var tempArray = []; //declaring the array as empty
+      while (tempArray.length < 7) { //keep doing untill we have 7
+        var randomNumber = Math.floor(Math.random() * 49 + 1); //get randomNumber
+        if (tempArray.indexOf(randomNumber) == -1) //if not in the aray
+          tempArray.push(randomNumber); //add to the array
+      }
+
+      // for (var i = 0; i < 7; i++) { //add a random number between 1 and 50, 5 times
+      //   tempArray.push(Math.floor(Math.random() * 49 + 1)); //pushing a number onto the Temp Array
+      // }
+
+      //sort numbers and no duplicates
+      tempArray.sort(sortNumber);
+
+      return tempArray;
+    }
+  </script>
+</body>
+
+</html>

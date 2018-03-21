@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Button 4</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style>
+      .myOutput{
+        color: #aaa;
+      }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <button type='button' class='buttonStyle itemButton btn btn-primary buttonOne'>New Game?</button>
+        <input type="number" name="" value="" class="inputOne form-control ">
+        <!-- This is how you do form areas for numbers -->
+        <div class="row">
+          <div class="col-md-12 myOutput">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      function getRandomColor() {
+        return Math.floor(Math.random() * 255);
+      }
+
+      var myArray = getRandomArray();
+      var numberOfGuesses = 0;
+
+      function getRandomArray(){
+        var tempArray = []; //declaring the array as empty
+
+        for(var i=0; i<5; i++){ //add a random number between 1 and 50, 5 times
+            tempArray.push(Math.floor(Math.random()*50+1)); //pushing a number onto the Temp Array
+        }
+        return tempArray;
+      }
+
+
+      // $(".myOutput").append("myArray: " + myArray);
+
+      $(".buttonOne").on("click", function() { //building an event that turns 'on' the button
+
+        // $(".myOutput").append("the secret number is "+secretNumber+"<br>");
+        numberOfGuesses = 0;
+
+      })
+      $(".inputOne").on("change", function() {
+
+        var inputValue = Number($(this).val());
+        var myIndex = myArray.indexOf(inputValue);
+
+        if (numberOfGuesses < 5){
+          //check
+          $(".myOutput").append("<br> "+" Incorrect, please try again. "+"<br>");
+
+          if(myIndex > -1){
+            $(".myOutput").append("<br> "+" Congratulations, "+inputValue+" is in the array! 🎉"+"<br>" );
+
+            setInterval(function(){
+                $("body").css("background-color", "RGB(" + getRandomColor() + "," + getRandomColor() + "," + getRandomColor() + ")");
+            },50); //interval to make the background change in ms
+          }
+
+          else{
+            $(".myOutput").append("<br> "+" Sorry, " + inputValue + "is not in the array. "+"<br>");
+          }
+        }
+
+        else{
+          $(".myOutput").append("<br> "+ "You are out of guesses. Game over. "+"<br>");
+        }
+
+        numberOfGuesses++;
+        $(".myOutput").append("<br> "+ "numberOfGuesses "+numberOfGuesses +"<br>");
+
+
+        var myIndex = myArray.indexOf(inputValue);
+        // $(".myOutput").append("The index of "+inputValue+" is "+myIndex+"<br>" );
+      }) //end CLICK
+    }) // end document ready
+  </script>
+</body>
+
+</html>
