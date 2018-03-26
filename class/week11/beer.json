@@ -1,0 +1,34 @@
+{
+  "Sheet1": {
+    "1": {
+      "itemId": 1,
+      "biaBotTitle": "Coors Light",
+      "biaBotPrice": "¥ 2930",
+      "biaBotImgUrl": "https://github.com/biancabottos/biancabottos.github.io/blob/master/class/week11/images/coors.jpg"
+    },
+    "2": {
+      "itemId": 2,
+      "biaBotTitle": "Rolling Rock",
+      "biaBotPrice": "¥ 9394",
+      "biaBotImgUrl": "https://github.com/biancabottos/biancabottos.github.io/blob/master/class/week11/images/rollingRock.jpg"
+    },
+    "3": {
+      "itemId": 3,
+      "biaBotTitle": "Twisted Tea",
+      "biaBotPrice": "¥1362",
+      "biaBotImgUrl": "https://github.com/biancabottos/biancabottos.github.io/blob/master/class/week11/images/twistedTea.png"
+    },
+    "4": {
+      "itemId": 4,
+      "biaBotTitle": "Molson Canadian",
+      "biaBotPrice": "¥ 6126",
+      "biaBotImgUrl": "https://github.com/biancabottos/biancabottos.github.io/blob/master/class/week11/images/molson.jpg"
+    },
+    "5": {
+      "itemId": 5,
+      "biaBotTitle": "Natural Light",
+      "biaBotPrice": "¥ 5238",
+      "biaBotImgUrl": "https://github.com/biancabottos/biancabottos.github.io/blob/master/class/week11/images/nattyLight.jpg"
+    }
+  }
+}
