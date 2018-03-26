@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chindogu</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <body>
+    <div class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Attention:</h4>
+          </div>
+          <div class="modal-body">
+            <p>Please fill out both fields&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 logo">
+          Chindogu.com
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="selectContainer flexSpaceAround">
+            <span>Choose another product class</span>
+            <select class="selectJSON form-control">
+            </select>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-2 ad1">
+
+        </div>
+        <div class="col-md-8 flexSpaceAround output">
+
+        </div>
+        <div class="col-md-2 ad2">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 footer">
+          <hr>
+          <span>© 2018 Chindogu.com</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      var formHtml = "";
+
+      function writeJSONToDom(d) {
+        var html = "";
+        for (var jsonObj in d) {
+          html += "<div data-id='" + jsonObj + "' class='itemContainer'>";
+          for (var key in d[jsonObj]) {
+            if (key === "itemId") {
+              continue;
+            }
+            if (d[jsonObj][key].indexOf("github") !== -1) {
+              html += "<div class='imageContainer'><img src='https://" + d[jsonObj][key] + "'/></div>";
+            } else {
+              html += "<div class='" + key + "'>" + d[jsonObj][key] + "</div>";
+            }
+          }
+          html += "<div class='buttonContainer'><button type='button' class='buyButton btn-default btn'>Buy</button></div>";
+          html += "</div>";
+        }
+
+          $(".output").html(html);
+
+      }
+
+      function getSelectOptions(){
+        var options =
+          { "Anderson 1":"https://andersonguelphjs.github.io/class/week11/myJSON.json",
+          "Anderson 2":"https://andersonguelphjs.github.io/class/week11/myJSON2.json"}
+        ;
+        var html="";
+
+        for (var key in options){
+          html+="<option value='"+options[key]+"'>"+key+"</option>";
+        }
+        $(".selectJSON").html(html);
+      }
+
+      function getJSON(url) {
+        $.get(url)
+          .done(function(data) {
+            console.log("success!");
+            console.dir(data);
+            writeJSONToDom(data.Sheet1);
+          })
+          .fail(function(data) {
+            console.log("fail!");
+            console.dir(data);
+          })
+      }
+
+      function getAds() {
+        var ads = [
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad1.jpeg",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad2.jpg",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad3.jpeg",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad4.jpeg",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad5.jpg",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad6.png",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad7.png",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad8.jpg",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad9.png",
+          "https://andersonguelphjs.github.io/class/week11/img/ads/ad10.jpeg"
+        ]
+          for (var i = 0; i < 3; i++) {
+            $(".ad1").append("<img class='ads' src='" + ads[Math.floor(Math.random() * 10)] + "'>");
+            $(".ad2").append("<img class='ads' src='" + ads[Math.floor(Math.random() * 10)] + "'>");
+          }
+      }
+
+      function initEvents() {
+
+          $("body").on("click", ".buyButton", function() {
+            console.log("click");
+            var item = $(this).closest(".itemContainer");
+            item.find(".buttonContainer").remove()
+            $(".output").html("<div class='itemContainer'>" + item.html() + "</div>" + formHtml);
+          });
+          $("body").on("click", ".submit", function() {
+
+            var username = $(".username").val();
+            var password = $(".password").val();
+            console.log("submit u: "+username+" p: "+password);
+
+            if (username && password){
+              $(".checkoutContainer").html("<div class='ordered'>The item has been ordered. <br>Verification ID#"+Math.floor(Math.random()*100000000)+"</div>" );
+            }
+            else{
+              console.log("modal");
+              $(".modal").modal("show");
+            }
+
+          });
+          $(".logo").on("click", function() {
+            window.location.reload();
+          });
+          $(".selectJSON").on("change", function() {
+            var url = $(this).val();
+            getJSON(url);
+            return false;
+          });
+
+          $(".selectJSON").change();
+          $("body").fadeIn();
+      }
+
+    $.get("https://andersonguelphjs.github.io/class/week11/partial.html")
+      .done(function(data) {
+                console.log("got partial");
+                formHtml = data;
+                $(document).ready(function (){
+                    getSelectOptions();
+                    initEvents();
+                    getAds();
+                })
+              })
+      .fail(function(data) {
+                console.log("failed to get partial " + JSON.stringify(data));
+              })
+
+    </script>
+  </body>
+
+</html>
