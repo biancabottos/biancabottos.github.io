@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cards Website Template</title>
   <style media="screen">
+  @import url('https://fonts.googleapis.com/css?family=Share');
+    body {
+      background-image: url(swirl.png);
+    }
+
     .outputArray {
       display: flex;
       justify-content: space-around;
       align-items: center;
+      margin-top: 30px;
+      padding-bottom: 300px;
     }
 
-    .individualCard { /*spaces out the cards */
-      margin-left: 30px;
-      margin-right: 30px;
+    .individualCard {
+      /*spaces out the cards */
+      margin-left: 20px;
+      margin-right: 20px;
     }
 
     .cardInfo {
       text-align: center;
     }
 
-    .itemButton{
+    .itemButton {
       text-align: right;
       padding: 10px;
+    }
+
+    /****  NAV  ****/
+
+    .nav-bar {
+      display: inline-block;
+      height: 90px;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(136, 15, 161, .10);
+      padding-top: 20px;
+      padding-bottom: 40px;
+
+    }
+
+    .nav-bar a {
+      font-size: 40px;
+      font-family: 'Share';
+      font-weight: bold;
+      color: #FF8040;
+      text-transform: uppercase;
+      text-shadow: 4px -2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-bar li {
+      display: inline-block;
+    }
+
+    .nav-bar ul {
+      word-spacing: 60px;
+    }
+
+    .footer{
+      font-size: 8px;
+      color: gray;
+      text-align: center;
+      background-color: rgba(136, 15, 161, .10);
     }
   </style>
 
@@ -40,138 +86,163 @@
 </head>
 
 <body>
+
+  <div id="nav-bar" class="nav-bar">
+    <nav>
+      <ul>
+        <li>
+          <a href="http://example.com/"> Home</a>
+        </li>
+        <li>
+          <a href="http://example.com/"> All</a>
+        </li>
+        <li>
+          <a href="http://example.com/"> Candy</a>
+        </li>
+        <li>
+          <a href="http://example.com/"> Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
   <div class="container">
     <div class="row">
-      <div class="col-md-12 cardSection">
-      </div>
+      <div class="col-md-12 cardSection"></div>
+
       <div class="col-md-12">
-        <div class="outputArray">
-        </div>
+        <div class="outputArray"></div>
+      </div>
+      <div class="col-md-12 footer">
+        Bianca Bottos 2018
       </div>
     </div>
   </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    //These are your Object Arrays
+    var chocolate = [{
+        "Name": "KitKat",
+        "Brand": "Nestle",
+        "Type": "Milk",
+        "Caramel": false,
+        "Nuts": true,
+        "imgUrl": "kitkat.png",
+        "button": "order"
+      },
+
+      {
+        "Name": "Coffee Crisp",
+        "Brand": "Nestle",
+        "Type": "Milk",
+        "Caramel": false,
+        "Nuts": false,
+        "imgUrl": "coffeeCrisp.png",
+        "button": "order"
+      },
+
+      {
+        "Name": "Twix",
+        "Brand": "Mars Inc.",
+        "Type": "Milk",
+        "Caramel": true,
+        "Nuts": false,
+        "imgUrl": "twix.png",
+        "button": "order"
+      },
+      {
+        "Name": "OH Henry",
+        "Brand": "Nestle",
+        "Type": "Milk",
+        "Caramel": true,
+        "Nuts": true,
+        "imgUrl": "ohHenry.png",
+        "button": "order"
+      }
+    ];
+
+    $(document).ready(function() {
+      $(".output").html("test output");
+      var html = ""; // This is the Variable to hold the html -> without this, nothing will show up
+
+      //HERE IS YOUR LOOP
+
+      /*      Remember that each card needs the following things:
+              - Gets the user do something such as redirecting to another page (this can be done with buttons, animations, etc.)
+              - Include and style the image
+              - Be organized in a specific way (HINT: Flexbox)
+       */
+
+      for (var i = 0; i < chocolate.length; i++) {
+        html += "<div class='panel panel-default individualCard'>" +
+          "<div class='cardInfo nameLabel'>" + chocolate[i].Name + "</div>" +
+          "<div class='cardInfo brandLabel'>" + chocolate[i].Brand + "</div>" +
+          "<div class='cardInfo typeLabel'>" + chocolate[i].Type + "</div>" +
+          "<div class='cardInfo caramelLabel'>" + chocolate[i].Caramel + "</div>" +
+          "<div class='cardInfo nutsLabel'>" + chocolate[i].Nuts + "</div>" +
+          "<div class='cardInfo nutsLabel'>" + chocolate[i].imgUrl + "</div>" +
+          "<div class='itemButton'><button type='button' class='btn btn-default'>" + chocolate[i].button + "</button></div>" + //Button Template
+          "</div>";
+      }
+      $(".outputArray").html(html); //outputs the loop onto the html
+
+    });
+  </script>
 
 
-      //These are your Object Arrays
-      var chocolate = [{
-          "Name":"KitKat",
-          "Brand": "Nestle",
-          "Type": "Milk",
-          "Caramel": false,
-          "Nuts": true,
-          "button": "order"
-        },
-
-        {
-          "Name": "Coffee Crisp",
-          "Brand": "Nestle",
-          "Type": "Milk",
-          "Caramel": false,
-          "Nuts": false,
-          "button": "order"
-        },
-
-        {
-          "Name": "Twix",
-          "Brand": "Mars Inc.",
-          "Type": "Milk",
-          "Caramel": true,
-          "Nuts": false,
-          "button": "order"
-        },
-        {
-          "Name": "OH Henry",
-          "Brand": "Nestle",
-          "Type": "Milk",
-          "Caramel": true,
-          "Nuts": true,
-          "button": "order"
-        }
-      ];
-
-      $(document).ready(function() {
-        $(".output").html("test output");
-        var html = ""; // This is the Variable to hold the html -> without this, nothing will show up
-
-        //HERE IS YOUR LOOP
-
-/*      Remember that each card needs the following things:
-        - Gets the user do something such as redirecting to another page (this can be done with buttons, animations, etc.)
-        - Include and style the image
-        - Be organized in a specific way (HINT: Flexbox)
- */
-
-        for (var i = 0; i < chocolate.length; i++) {
-          html += "<div class='panel panel-default individualCard'>" +
-            "<div class='cardInfo nameLabel'>" + chocolate[i].Name + "</div>" +
-            "<div class='cardInfo brandLabel'>" + chocolate[i].Brand + "</div>" +
-            "<div class='cardInfo typeLabel'>" + chocolate[i].Type + "</div>" +
-            "<div class='cardInfo caramelLabel'>" + chocolate[i].Caramel + "</div>" +
-            "<div class='cardInfo nutsLabel'>" + chocolate[i].Nuts + "</div>" +
-            "<div class='itemButton'><button type='button' class='btn btn-default'>" + chocolate[i].button + "</button></div>" + //Button Template
-            "</div>";
-        }
-        $(".outputArray").html(html); //outputs the loop onto the html
-
-      });
-    </script>
-
-
-    <script>
-      //   // THIS IS FOR IF YOU WANT TO GET A JSON FILE FROM ONLINE
-      //   var url = "https://zabrinabolasco.github.io/class/week8/assets/cities.json" //JSON Link goes here (it's currently a template right now, don't worry about it)
-      //   console.log("You need a website — why not do it yourself?"); //message appears so you can test your JavaScript here
-      //
-      //   // This is the defined function
-      //   function cardShuffle(d) {
-      //     console.dir(d);
-      //
-      //     var html = ""; // This is the variable to hold the html
-      //
-      //     // THIS IS THE LOOP //
-      //
-      //     /*Remember that each card needs the following things:
-      //         - Gets the user do something such as redirecting to another page (this can be done with buttons, animations, etc.)
-      //         - Include an image
-      //         - Be organized in a specific way (HINT: JSON)
-      //     */
-      //
-      //     //Here is the loop of the Array you made
-      //     for (var i = 0; i < d.length; i++) {
-      //       html += "<div>" + d[i].name + "</div>"; //Image
-      //       html += "<div>" + d[i].texture + "</div>"; // Item 1
-      //       html += "<div>" + d[i].temperature + "</div>"; // Item 2
-      //       html += "<div>" + d[i].origin + "</div>"; // Item 3
-      //       html += "<div>" + d[i].twelve + "</div>"; // Item 4
-      //       html += "<button type='button' class='itemButton btn btn-default'>Click!</button>"; //Design your button here, make sure you put
-      //       html += "</div>";
-      //     }
-      //
-      //     //when the document is ready, this loads the JSON into the class 'cardSection' in the html
-      //     $(document).ready(function() {
-      //       $(".cardSection").html(html);
-      //     })
-      //   }
-      //
-      //   // Gets the JSON from a url
-      //   $.get(url)
-      //     .done(function(data) { //what comes back is put into "data"
-      //       console.log("success! ");
-      //       //Takes the "data and pushes it to a function => cardShuffle
-      //       cardShuffle(data);
-      //     })
-      //
-      //     //If it fails, then this message should appear
-      //     .fail(function(data) {
-      //       console.log("failed " + JSON.stringify(data));
-      //     })
-    </script>
+  <script>
+    //   // THIS IS FOR IF YOU WANT TO GET A JSON FILE FROM ONLINE
+    //   var url = "https://zabrinabolasco.github.io/class/week8/assets/cities.json" //JSON Link goes here (it's currently a template right now, don't worry about it)
+    //   console.log("You need a website — why not do it yourself?"); //message appears so you can test your JavaScript here
+    //
+    //   // This is the defined function
+    //   function cardShuffle(d) {
+    //     console.dir(d);
+    //
+    //     var html = ""; // This is the variable to hold the html
+    //
+    //     // THIS IS THE LOOP //
+    //
+    //     /*Remember that each card needs the following things:
+    //         - Gets the user do something such as redirecting to another page (this can be done with buttons, animations, etc.)
+    //         - Include an image
+    //         - Be organized in a specific way (HINT: JSON)
+    //     */
+    //
+    //     //Here is the loop of the Array you made
+    //     for (var i = 0; i < d.length; i++) {
+    //       html += "<div>" + d[i].name + "</div>"; //Image
+    //       html += "<div>" + d[i].texture + "</div>"; // Item 1
+    //       html += "<div>" + d[i].temperature + "</div>"; // Item 2
+    //       html += "<div>" + d[i].origin + "</div>"; // Item 3
+    //       html += "<div>" + d[i].twelve + "</div>"; // Item 4
+    //       html += "<button type='button' class='itemButton btn btn-default'>Click!</button>"; //Design your button here, make sure you put
+    //       html += "</div>";
+    //     }
+    //
+    //     //when the document is ready, this loads the JSON into the class 'cardSection' in the html
+    //     $(document).ready(function() {
+    //       $(".cardSection").html(html);
+    //     })
+    //   }
+    //
+    //   // Gets the JSON from a url
+    //   $.get(url)
+    //     .done(function(data) { //what comes back is put into "data"
+    //       console.log("success! ");
+    //       //Takes the "data and pushes it to a function => cardShuffle
+    //       cardShuffle(data);
+    //     })
+    //
+    //     //If it fails, then this message should appear
+    //     .fail(function(data) {
+    //       console.log("failed " + JSON.stringify(data));
+    //     })
+  </script>
 </body>
 
 </html>
