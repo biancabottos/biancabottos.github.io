@@ -10,7 +10,7 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="startStyle.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -155,6 +155,47 @@
         //loop this here
       $(".output").html(html);
     }
+
+    var forHtml="";
+    var formUrl="https://andersonguelphjs.github.io/class/week12/partial.html";
+
+    $.get(formUrl)
+    .done(function(data){//success
+      console.log("success get get fromHtml! ");
+      console.log(data);
+      formHtml=data;
+    //  writeJSONToDOM(data.Sheet1);
+    })
+    .fail(function(data){//fail
+      console.log("fail get select json! ");
+      console.dir(data);
+    })
+
+    $(".buyButton").on("click", function(){
+      console.log(".clicked buy!");
+      // closests goes up the tree to find the first match
+      var thisItem = $(this).closest(".itemContainer");
+      car itemId = $(this).attr("data-id");
+
+
+      var html = "<div fata id='' class='itemContainer'></div>";
+
+
+      //prevent multiple clicks
+      return false;
+    })
+
+
+$(".logo").on("click", function(){
+  window.location.reload();
+
+})
+
+
+
+
+
+
     $(document).ready(function() {
       getOptions();
       getAds();
