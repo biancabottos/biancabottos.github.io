@@ -157,6 +157,14 @@ var spriteImages = [{
     "width": 4800,
     "height": 200,
     "name": "cat"
+  },
+  {
+    "spriteMapUrl":"https://biancabottos.github.io/class/week12/animation/images/sun.png",
+    "numFrames": 2,
+    "width": 500,
+    "height": 100,
+    "name": "sun"
+
   }
 ];
 var animations = []; //an array to hold the currently existing sprite obects
