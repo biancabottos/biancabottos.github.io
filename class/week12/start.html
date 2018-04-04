@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +23,25 @@
 </head>
 
 <body>
+  <div class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Attention:</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please fill out both fields&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
   <div class="container">
     <div class="row">
       <div class="col-md-12 logo">
@@ -121,8 +142,71 @@
             })
           }
           //alert("value "+val);
-        })
+        })//end select change
     }
+//event delegation ; put this on any of this kind that shows up
+// $(".buyButton").on("click", function()){
+//   console.log("clicked buy!");
+// })
+$("body").on("click",".buyButton", function(){
+  console.log("clicked buy!");
+  //closest goes up the tree to find the first match
+  var thisItem = $(this).closest(".itemContainer");
+  var itemId = $(this).attr("data-id");
+
+  //find means go down the tree
+  thisItem.find(".buttonContainer").remove();
+
+  //write this item + form html
+var html = "<div data-id='"+itemId+"' class='itemContainer'>"+thisItem.html()+"</div>"+formHtml;
+
+$(".output").html(html);
+
+//prevent multiple click events
+  return false;
+})
+
+$(".logo").on("click", function(){
+  window.location.reload();
+
+})
+
+$("body").on("click", ".submit", function(){
+console.log("clicked submit");
+//pseudocode:
+//check if username and password is filled
+//if not show the modal
+//if yes, show a confirmation message
+var username = $(".username").val();
+var password = $(".password").val();
+
+if(username && password){
+console.log("both are filled");
+var randomNumber = Math.floor(Math.random()*1000000);
+$(".checkoutContainer").html("div class='confirmationMessage'>Thank you for your order<br>Confirmation #"+randomNumber+"</div>");
+//simulate sending to data to the database;
+//creating a json object with some info and writing to the screen
+//add a confirmation message to the screen
+var itemId = $(".itemContainer").attr("data-id");
+//$(post) simulation
+var postObj={
+  "itemId":itemId,
+  "username":username,
+  "password":password,
+  "cNumber":randomNumber
+}
+
+$(".checkoutContainer").append("<br><br>"+JSON.stringify(postObj));
+
+}
+
+else{//at least one is empty so show the modal
+  $(".modal").modal("show");
+}
+
+})
+
+//end initEvents
 
     function writeJSONToDOM(d){
       var html="";
@@ -156,53 +240,35 @@
       $(".output").html(html);
     }
 
-    var forHtml="";
-    var formUrl="https://andersonguelphjs.github.io/class/week12/partial.html";
+    var formHtml="";
+    var formUrl="https://samanthalaaa.github.io/class/week12/partial.html";
 
     $.get(formUrl)
     .done(function(data){//success
-      console.log("success get get fromHtml! ");
+      console.log("success get formHtml! ");
       console.log(data);
       formHtml=data;
-    //  writeJSONToDOM(data.Sheet1);
+      //writeJSONToDOM(data.Sheet1);
+      $(document).ready(function() {
+        getOptions();
+        getAds();
+        initEvents();
+        $(".selectContainer").find("select").change();
+        $("body").fadeIn();
+      })
     })
     .fail(function(data){//fail
       console.log("fail get select json! ");
       console.dir(data);
     })
 
-    $(".buyButton").on("click", function(){
-      console.log(".clicked buy!");
-      // closests goes up the tree to find the first match
-      var thisItem = $(this).closest(".itemContainer");
-      car itemId = $(this).attr("data-id");
-
-
-      var html = "<div fata id='' class='itemContainer'></div>";
-
-
-      //prevent multiple clicks
-      return false;
-    })
-
-
-$(".logo").on("click", function(){
-  window.location.reload();
-
-})
 
 
 
 
 
 
-    $(document).ready(function() {
-      getOptions();
-      getAds();
-      initEvents();
-      $(".selectContainer").find("select").change();
-      $("body").fadeIn();
-    })
+
   </script>
 </body>
 

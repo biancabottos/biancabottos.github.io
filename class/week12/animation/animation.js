@@ -1,179 +1,275 @@
-//redraw loop
-function animationLoop() {
-
-  var animationsToDestroy = []; //to hold any animations that went off the screen
-
-  //tell the browser we want to repaint and when ready use this function
-  //endless loop
-  window.requestAnimationFrame(animationLoop);
-
-  // Clear the whole canvas
-  canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-
-  //draw every animation
-  for (var i = 0; i < animations.length; i++) {
-    animations[i].update(); //change properties (frame and position)
-    if (animations[i].render()) { //draw it, returns a boolean that tells us teh sprite went off the screen
-      animationsToDestroy.push(animations[i]); //add to destroy array
-    }
-  }
-
-  // Destroy animations that went off the screen, and spawn new ones to replace them
-  for (var j = 0; j < animationsToDestroy.length; j++) {
-    destroyAnimation(animationsToDestroy[j]);
-    animations[animations.length] = spawnAnimation(); //add the sprite to the end of the animations
-  }
-
-}
-
-//a sprite object, update and render
-function Sprite(options) {
-
-  //Sprite object properties
-  var that = {}, //holds sprite properties
-    frameIndex = 0, //what frame are we on
-    tickCount = 0, //how much 'time' has gone by
-    ticksPerFrame = options.ticksPerFrame || 0, //how many ticks must pass for a channge
-    numberOfFrames = options.numberOfFrames || 1; //how many frames in this image
 
 
-  that.context = options.context; //where is it drawn
-  that.width = options.width;
-  that.height = options.height;
-  that.x = options.x; //where is it on the canvas
-  that.y = options.y;
-  that.deltaX = Math.floor(Math.random() * 5 + 5); //position change
-  that.deltaX *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;//randomize negative or positive
-  that.deltaY = Math.floor(Math.random() * 5 + 5);
-  that.deltaY *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-  that.image = options.image;
-  that.name = options.name;
-  that.scaleRatio = options.scaleRatio;
-  that.destroy = false; //should we destroy it?
+<!DOCTYPE html>
+<html lang="en">
 
-  //Sprite functions
-  //update the properties as time goes
-  that.update = function() {
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chindogu.com</title>
 
-    tickCount += 1;
-    if (tickCount > ticksPerFrame) { //we will change it
-      that.x += that.deltaX;
-      that.y += that.deltaY;
-      tickCount = 0;
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="startStyle.css">
 
-      // If the current frame index is in range
-      if (frameIndex < numberOfFrames - 1) {
-        // Go to the next frame
-        frameIndex += 1;
-      } else {
-        frameIndex = 0;
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Attention:</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please fill out both fields&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 logo">
+        Chindogu.com
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="selectContainer flexSpaceAround">
+          <div class="selectLabel">
+            Choose another product type :
+          </div>
+          <div>
+            <select class="form-control" name="">
+
+    </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 adsLeft">
+
+      </div>
+      <div class="col-md-8 output flexSpaceAround">
+
+      </div>
+      <div class="col-md-2 adsRight">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 footer">
+        <hr>
+        <span>© 2018 Chindogu.com</span>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script>
+    function getAds() {
+
+      var ads = [
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad1.jpeg",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad2.jpg",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad3.jpeg",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad4.jpeg",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad5.jpg",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad6.png",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad7.png",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad8.jpg",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad9.png",
+        "https://andersonguelphjs.github.io/class/week11/img/ads/ad10.jpeg"
+      ];
+      //write 3 ads on either side, using a random url from the ads array
+      for (var i = 0; i < 3; i++) {
+        $(".adsLeft").append("<div class='ad'><img src='" + ads[Math.floor(Math.random() * 10)] + "'/></div>");
+
+        $(".adsRight").append("<div class='ad'><img src='" + ads[Math.floor(Math.random() * 10)] + "'/></div>");
       }
-    }
-  };
 
-  // Draw the animation
-  //return whether or not to destroy it (i.e. it went off the screen)
-  that.render = function() {
-    //are we now off the screen?
-    if (that.x < (-1 * that.width / numberOfFrames) || that.x > canvas.width || that.y < (-1 * that.height) || that.y > canvas.height) {
-      return true;
     }
 
-    //built-in function that takes the following parameters
-    that.context.drawImage(
-      that.image,
-      frameIndex * that.width / numberOfFrames,
-      0,
-      that.width / numberOfFrames,
-      that.height,
-      that.x,
-      that.y,
-      that.width / numberOfFrames * that.scaleRatio,
-      that.height * that.scaleRatio);
+    function getOptions() {
+      var html = "";
+      var options = {
+        "Anderson 1": "https://andersonguelphjs.github.io/class/week11/myJSON.json",
+        "Anderson 2": "https://andersonguelphjs.github.io/class/week11/myJSON2.json"
+        //after you will create a JSON file which will be an option here
+      };
+      //loop through the object
+      for (var key in options){
+        html+="<option value='"+options[key]+"'>"+key+"</option>";
+      }
+      //write the options to the select
+      $(".selectContainer").find("select").html(html);
 
-    //output some info to the console
-    console.log("sprite: " + that.name + " x: " + that.x + " y: " + that.y);
-    return false;
-  };
-
-  return that;
-}
-
-//remove it from the array
-function destroyAnimation(animation) {
-  //find teh one we want to destory and remove it from the array
-  for (var i = 0; i < animations.length; i++) {
-    if (animations[i] === animation) { //found it
-      animations[i] = null; //destory from memory
-      animations.splice(i, 1); //remove an item in the middle
-      break; //end the loop
     }
-  }
+//will contain all the events
+    function initEvents(){
+      //do this when user changes teh select
+        $(".selectContainer").find("select").on("change", function(){
+          var val = $(this).val();
+
+          if (val){//if val exists
+            $.get(val)//use the url to get the json
+            .done(function(data){//success
+              console.log("success get select json! ");
+              console.dir(data);
+              writeJSONToDOM(data.Sheet1);
+            })
+            .fail(function(data){//fail
+              console.log("fail get select json! ");
+              console.dir(data);
+            })
+          }
+          //alert("value "+val);
+        })//end select change
+    }
+//event delegation ; put this on any of this kind that shows up
+// $(".buyButton").on("click", function()){
+//   console.log("clicked buy!");
+// })
+$("body").on("click",".buyButton", function(){
+  console.log("clicked buy!");
+  //closest goes up the tree to find the first match
+  var thisItem = $(this).closest(".itemContainer");
+  var itemId = $(this).attr("data-id");
+
+  //find means go down the tree
+  thisItem.find(".buttonContainer").remove();
+
+  //write this item + form html
+var html = "<div data-id='"+itemId+"' class='itemContainer'>"+thisItem.html()+"</div>"+formHtml;
+
+$(".output").html(html);
+
+//prevent multiple click events
+  return false;
+})
+
+$(".logo").on("click", function(){
+  window.location.reload();
+
+})
+
+$("body").on("click", ".submit", function(){
+console.log("clicked submit");
+//pseudocode:
+//check if username and password is filled
+//if not show the modal
+//if yes, show a confirmation message
+var username = $(".username").val();
+var password = $(".password").val();
+
+if(username && password){
+console.log("both are filled");
+var randomNumber = Math.floor(Math.random()*1000000);
+$(".checkoutContainer").html("div class='confirmationMessage'>Thank you for your order<br>Confirmation #"+randomNumber+"</div>");
+//simulate sending to data to the database;
+//creating a json object with some info and writing to the screen
+//add a confirmation message to the screen
+var itemId = $(".itemContainer").attr("data-id");
+//$(post) simulation
+var postObj={
+  "itemId":itemId,
+  "username":username,
+  "password":password,
+  "cNumber":randomNumber
 }
 
-//create a sprite
-function spawnAnimation() {
+$(".checkoutContainer").append("<br><br>"+JSON.stringify(postObj));
 
-  var spriteIndex = Math.floor(Math.random() * spriteImages.length + 1) - 1; //get a random index from spriteImages
-  var animationImg = new Image(); //make an image object
-  animationImg.src = spriteImages[spriteIndex].spriteMapUrl; //get a random sprite sheet
-  var scaleRatio = Math.random() * 0.5 + 0.5; //get a random scale
-  // add a sprite to the array by returning created sprite with properties; note we use properties from our random item in spriteImages
-  return Sprite({
-    scaleRatio: scaleRatio,
-    context: canvas.getContext("2d"),
-    width: spriteImages[spriteIndex].width,
-    height: spriteImages[spriteIndex].height,
-    image: animationImg,
-    name: spriteImages[spriteIndex].name,
-    numberOfFrames: spriteImages[spriteIndex].numFrames,
-    ticksPerFrame: 1,
-    x: Math.random() * (canvas.width - (spriteImages[spriteIndex].width / spriteImages[spriteIndex].numFrames) * scaleRatio),
-    y: Math.random() * (canvas.height - spriteImages[spriteIndex].height * scaleRatio)
-  });
 }
 
-var canvas = document.getElementById("myCanvas"); //where we draw it
-canvas.width = screen.availWidth;
-canvas.height = screen.availHeight;
-//a bunch of sprite data
-var spriteImages = [{
-    "spriteMapUrl": "images/coin-sprite-animation.png",
-    "numFrames": 10,
-    "width": 1000,
-    "height": 100,
-    "name": "coin"
-  },
-  {
-    "spriteMapUrl": "images/Madoka.png",
-    "numFrames": 8,
-    "width": 809,
-    "height": 136,
-    "name": "girl"
-  },
-  {
-    "spriteMapUrl": "images/catWalking.png",
-    "numFrames": 12,
-    "width": 4800,
-    "height": 200,
-    "name": "cat"
-  },
-  {
-    "spriteMapUrl":"https://biancabottos.github.io/class/week12/animation/images/sun.png",
-    "numFrames": 6,
-    "width": 500,
-    "height": 100,
-    "name": "sun"
-
-  }
-];
-var animations = []; //an array to hold the currently existing sprite obects
-var maxAnimations = spriteImages.length; //how many animations we want on the screen at any one time
-
-//begin the program, spawn a bunch of animations and we will hold them in animations array
-for (var i = 0; i < maxAnimations; i++) {
-  animations[i] = spawnAnimation(i); //get a sprite and put it in the array; spawnAnimation returns a Sprite
+else{//at least one is empty so show the modal
+  $(".modal").modal("show");
 }
 
-//animation magic
-animationLoop();
+})
+
+//end initEvents
+
+    function writeJSONToDOM(d){
+      var html="";
+
+      for(var jsonObj in d){
+        html+="<div data-id='"+jsonObj+"' class='itemContainer'>";
+        for (var key in d[jsonObj]){//loop through the keys of each object
+
+          var str = String(d[jsonObj][key]);
+
+          if (key==="itemId"){
+            continue;//continue mean skip this iteration of the loop
+          }
+          if (str.indexOf("github")!==-1){
+            //if 'github' text appears in the value (-1 means not found)
+            html+="<div class='imageContainer'><img src='https://"+d[jsonObj][key]+"'></div>";
+          }
+          else{//otherwise use the key as teh class and teh value as teh text
+            html+="<div class='"+key+"'>"+d[jsonObj][key]+"</div>";
+          }
+        }//inner loop
+
+       html+="<div class='buttonContainer'>";
+       html+="<button type='button' class='buyButton btn-default btn'>Buy</button>";
+       html+="</div>";
+       html+="</div>";
+
+     }//first for loop
+
+        //loop this here
+      $(".output").html(html);
+    }
+
+    var formHtml="";
+    var formUrl="https://samanthalaaa.github.io/class/week12/partial.html";
+
+    $.get(formUrl)
+    .done(function(data){//success
+      console.log("success get formHtml! ");
+      console.log(data);
+      formHtml=data;
+      //writeJSONToDOM(data.Sheet1);
+      $(document).ready(function() {
+        getOptions();
+        getAds();
+        initEvents();
+        $(".selectContainer").find("select").change();
+        $("body").fadeIn();
+      })
+    })
+    .fail(function(data){//fail
+      console.log("fail get select json! ");
+      console.dir(data);
+    })
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
