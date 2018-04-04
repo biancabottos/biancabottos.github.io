@@ -160,7 +160,7 @@ var spriteImages = [{
   },
   {
     "spriteMapUrl":"https://biancabottos.github.io/class/week12/animation/images/sun.png",
-    "numFrames": 2,
+    "numFrames": 6,
     "width": 500,
     "height": 100,
     "name": "sun"
